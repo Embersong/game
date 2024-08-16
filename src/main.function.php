@@ -1,13 +1,19 @@
 <?php
 
-function main(): string
+function main(string $configFileAddress): string
 {
+    $config = readConfig($configFileAddress);
+
+    if (!$config) {
+        return handleError("Невозможно подключить файл настроек");
+    }
+
     $functionName = parseCommand();
 
     _log($functionName);
 
     if (function_exists($functionName)) {
-        $result = $functionName();
+        $result = $functionName($config);
     } else {
         $result = handleError("Вызываемая функция не существует");
     }
@@ -24,6 +30,8 @@ function parseCommand(): string
     if (isset($_SERVER['argv'][1])) {
         $functionName = match ($_SERVER['argv'][1]) {
             'rand' => 'randFunction',
+            'cars' => 'getCars',
+            'posts' => 'getPosts',
             default => 'helpFunction'
         };
     }
@@ -34,4 +42,9 @@ function parseCommand(): string
 function helpFunction(): string
 {
     return handleHelp();
+}
+
+function readConfig(string $configAddress): array|false
+{
+    return parse_ini_file($configAddress, true);
 }

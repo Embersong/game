@@ -8,12 +8,14 @@ function handleError(string $errorText): string
 
 function handleHelp(): string
 {
-    $help = "Программа работы с файловым хранилищем \r\n";
-    $help .= "Порядок вызова\r\n";
-    $help .= "php app.php [COMMAND] \r\n";
-    $help .= "Доступные команды: \r\n";
-    $help .= "rand - игра, \"Угадай число\" \r\n";
-    $help .= "help - помощь \r\n";
+    $help = "Программа работы с файловым хранилищем" . PHP_EOL;
+    $help .= "Порядок вызова" . PHP_EOL;
+    $help .= "php app.php [COMMAND]" . PHP_EOL;
+    $help .= "Доступные команды:" . PHP_EOL;
+    $help .= "rand - игра, \"Угадай число\"" . PHP_EOL;
+    $help .= "posts - список всех постов" . PHP_EOL;
+    $help .= "addpost - добавить пост" . PHP_EOL;
+    $help .= "help - помощь" . PHP_EOL;
 
     return $help;
 }

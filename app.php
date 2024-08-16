@@ -1,14 +1,16 @@
 <?php
-
+const DS = DIRECTORY_SEPARATOR;
 // подключение файлов логики
 //TODO сформировать абсолютный путь
-require_once 'src/main.function.php' ;
-require_once 'src/template.function.php';
-require_once 'src/log.function.php';
-require_once 'src/game.function.php';
+/*require_once __DIR__ . DS .'src/main.function.php' ;
+require_once __DIR__ . '/src/template.function.php';
+require_once __DIR__ . '/src/log.function.php';
+require_once __DIR__ . '/src/game.function.php';*/
+
+require_once __DIR__ . "/vendor/autoload.php";
 
 // вызов корневой функции
-$result = main();
+$result = main('config.ini');
 
 // вывод результата
-echo $result; 
+echo $result;

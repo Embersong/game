@@ -1,18 +1,18 @@
 <?php
-//TODO сделать еще игру на сложение например, попробовать отделить логику игры и взаимодейсвтия с пользователем
-function randFunction(): string
+
+
+function randFunction(array $config): string
 {
     _log("Запуск игры угадай число");
-
     echo 'Привет, давай поиграем в игру угадай число!' . PHP_EOL;
-    $name = readline('Как тебя зовут? ');
+    $name = readline("Как тебя зовут? ");
     echo "Привет, $name!" . PHP_EOL;
 
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < 2; $i++) {
         $correct = rand(1, 2);
-        $question = "Угадай число от 1 до 2";
+        $question = "Угадай число от 1 до 2. ";
 
-        $answer = readline("Вопрос: {$question}\nВаш ответ:");
+        $answer = readline("Вопрос: {$question}\nВаш ответ: ");
 
         if ($answer == $correct) {
             echo "Верно!" . PHP_EOL;
@@ -22,6 +22,6 @@ function randFunction(): string
         }
     }
 
-    return "Поздравляю, $name!";
+    return "Поздравляю, $name!" . PHP_EOL;
 }
 
