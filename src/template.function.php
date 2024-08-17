@@ -10,9 +10,9 @@ function handleHelp(): string
 {
     $help = "Программа работы с файловым хранилищем \r\n";
     $help .= "Порядок вызова\r\n";
-    $help .= "php app.php [COMMAND] \r\n";
+    $help .= "php cli.php [COMMAND] \r\n";
     $help .= "Доступные команды: \r\n";
-    $help .= "rand - игра, \"Угадай число\" \r\n";
+    $help .= "rand - игра, \"Угадай число\"" . PHP_EOL;
     $help .= "help - помощь \r\n";
 
     return $help;
