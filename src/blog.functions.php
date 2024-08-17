@@ -2,14 +2,12 @@
 function getPosts(array $config): string
 {
     $db = @dbConnect($config);
-    if (!$db) {
-        return handleError("Ошибка соединения с БД");
-    }
 
-    $result = pg_query($db, "select id, title from posts;");
+
+    $result = @pg_query($db, "select id, title from posts;");
 
     if (!$result) {
-        return handleError("Ошибка запроса");
+        return handleError("Ошибка запроса "  . pg_last_error($db));
     }
 
     $arr = pg_fetch_all($result);

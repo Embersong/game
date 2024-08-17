@@ -19,5 +19,7 @@
             "email": "evebay@mail.ru"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-pgsql": "*"
+    }
 }

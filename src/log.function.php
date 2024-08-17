@@ -1,7 +1,4 @@
 <?php
-//функция для примера, осуществляющая вывод текстовой информации в файл
-
-
 
 function _log(mixed $data, string $suffix = ''): void
 {
@@ -9,7 +6,12 @@ function _log(mixed $data, string $suffix = ''): void
 
     $data = "### " . date("d.m.Y H:i:s") . ": " . $data;
 
-    $fileHandler = fopen(dirname(__DIR__) . '/storage/logs.txt' . $suffix, 'a');
+    $fileHandler = @fopen(dirname(__DIR__) . '/storage/logs.txt' . $suffix, 'a');
+
+    if (!$fileHandler) {
+        echo handleError("Не могу открыть файл для логов");
+        die();
+    }
 
     fputs($fileHandler, $data . PHP_EOL);
 

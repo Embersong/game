@@ -6,7 +6,10 @@ function dbConnect(array $config): PgSql\Connection|false
     if ($db === null) {
         $db = pg_connect(getConnectionString($config));
     }
-
+    if (!$db) {
+        echo handleError("Ошибка соединения с БД");
+        die();
+    }
     return $db;
 }
 
