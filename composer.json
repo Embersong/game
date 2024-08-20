@@ -6,12 +6,13 @@
             "Ember\\Game\\": "src/"
         },
         "files": [
-            "src/game.function.php",
+            "src/games/game.function.php",
             "src/log.function.php",
-            "src/main.function.php",
-            "src/template.function.php",
-            "src/db.functions.php",
-            "src/blog.functions.php"
+            "src/app/main.function.php",
+            "src/app/template.function.php",
+            "src/app/db.functions.php",
+            "src/blog/commands/blog.functions.php",
+            "src/blog/api/blog.php"
         ]
     },
     "authors": [

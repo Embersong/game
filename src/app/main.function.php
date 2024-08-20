@@ -4,8 +4,6 @@
 
 function main(string $configFileAddress): string
 {
-
-
     $config = readConfig($configFileAddress);
 
     if (!$config) {
@@ -53,7 +51,13 @@ function readConfig(string $configAddress): array|false
 }
 
 //TODO убрать передачу конфига параметром и получать его внутре где нужно через эту функцию через Static
-function getConfig()
+function getConfig(): array|bool|null
 {
+    static $config = null;
 
+    if (is_null($config)) {
+        $config = readConfig('config.ini');
+    }
+
+    return $config;
 }
