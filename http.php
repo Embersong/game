@@ -19,12 +19,18 @@ $id = $url_array[3] ?? null;
 
 //Получаем список маршрутов и извлекаем имя нужной функции
 $routes = require "routes.php";
-$functionName = $routes[$action];
+if (isset($routes[$action])) {
+    $functionName = $routes[$action];
+} else {
+    echo "Нет такого ресурса";
+    die();
+}
+
 
 if (function_exists($functionName)) {
     $result = isset($id) ? $functionName($id) : $functionName();
     echo $result;
 } else {
-    echo 'Нет такого ресурса';
+    echo 'Нет такой функции';
 }
 
