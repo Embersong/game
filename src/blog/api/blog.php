@@ -1,14 +1,20 @@
 <?php
 function apiPosts(): bool|string
 {
-    $db = @dbConnect(getConfig());
+    $posts = getAllPosts();
 
+    if (!$posts) {
+        return json_encode([
+            'status' => 'error',
+            'message' => 'Ошибка получения запроса ' . pg_last_error(@dbConnect(getConfig()))
+        ]);
+    }
 
-    $result = @pg_query($db, "select id, title, preview from public.\"Posts\";");
-
-    //TODO проверка на ошибки и вывод json c текстом ошибки
-
-    return json_encode(pg_fetch_all($result), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    return json_encode([
+        'status' => 'success',
+        'message' => 'Посты успешно получены',
+        'data' => $posts
+    ]);
 }
 
 function apiPost(int $id)

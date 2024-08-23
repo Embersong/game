@@ -61,3 +61,22 @@ function getConfig(): array|bool|null
 
     return $config;
 }
+
+function render(string $page, array $params = []): string
+{
+    ob_start();
+
+    if (!is_null($params)) {
+        extract($params);
+    }
+
+    $fileName = dirname(__DIR__) . '/templates/' . $page . ".php";
+
+    if (file_exists($fileName)) {
+        include $fileName;
+    } else {
+        Die("Страницы {$page} не существует.");
+    }
+
+    return ob_get_clean();
+}

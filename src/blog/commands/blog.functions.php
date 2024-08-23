@@ -34,10 +34,10 @@ function getPost(array $config): string
 
 function getPosts(array $config): string
 {
-    $db = @dbConnect($config);
 
 
-    $result = @pg_query($db, "select id, title, preview from public.\"Posts\";");
+
+    $result = getAllPosts();
 
     if (!$result) {
         return handleError("Ошибка запроса "  . pg_last_error($db));
@@ -51,5 +51,5 @@ function getPosts(array $config): string
         $posts[] = $row;
     }*/
 
-    return print_r(pg_fetch_all($result), true);
+    return print_r($result, true);
 }

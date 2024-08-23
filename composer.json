@@ -12,7 +12,9 @@
             "src/app/template.function.php",
             "src/app/db.functions.php",
             "src/blog/commands/blog.functions.php",
-            "src/blog/api/blog.php"
+            "src/blog/api/blog.php",
+            "src/blog/http/posts.php",
+            "src/models/posts.php"
         ]
     },
     "authors": [
